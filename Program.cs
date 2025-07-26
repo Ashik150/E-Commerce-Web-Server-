@@ -32,6 +32,11 @@ app.MapGet("/api/categories", () =>
 //Post Categories
 app.MapPost("/api/categories", ([FromBody] Category categoryData) =>
 {
+    if (string.IsNullOrEmpty(categoryData.Name))
+    {
+        return Results.BadRequest("Category Name is Required and can't be empty");
+    }
+
     var category = new Category
     {
         CategoryId = Guid.NewGuid(),
@@ -48,7 +53,7 @@ app.Run();
 public record Category
 {
     public Guid CategoryId { get; set; }
-    public string? Name { get; set; }
+    public string Name { get; set; }
     public string? Description { get; set; }
     public DateTime CreatedAt { get; set; }
 
