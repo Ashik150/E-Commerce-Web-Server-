@@ -9,5 +9,10 @@ Accept: application/json
 
 ###
 POST {{E_Commerce_Web_Server_HostAddress}}/api/categories
-Accept: application/json
+Content-Type: application/json
+
+{
+    "name" : "Mechanical",
+    "description" : "All mechanical items"
+}
 

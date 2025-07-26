@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http.Connections;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,13 +30,13 @@ app.MapGet("/api/categories", () =>
 });
 
 //Post Categories
-app.MapPost("/api/categories", () =>
+app.MapPost("/api/categories", ([FromBody] Category categoryData) =>
 {
     var category = new Category
     {
         CategoryId = Guid.NewGuid(),
-        Name = "Electronics",
-        Description = "All electronic items",
+        Name = categoryData.Name,
+        Description = categoryData.Description,
         CreatedAt = DateTime.UtcNow
     };
     categories.Add(category);
