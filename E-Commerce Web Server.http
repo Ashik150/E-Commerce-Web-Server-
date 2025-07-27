@@ -12,7 +12,7 @@ POST {{E_Commerce_Web_Server_HostAddress}}/api/categories
 Content-Type: application/json
 
 {
-    "name" : "",
+    "name" : "Mechanical",
     "description" : "All mechanical items"
 }
 
